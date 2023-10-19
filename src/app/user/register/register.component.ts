@@ -14,17 +14,32 @@ export class RegisterComponent {
     Validators.pattern('^[a-zA-Z ]*$'),
   ]);
 
-  email = new FormControl('');
-  password = new FormControl('');
-  confirlm_password = new FormControl('');
-  age = new FormControl('');
+  email = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(30),
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-])[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]{8,}$'
+    ),
+  ]);
+  confirm_password = new FormControl('', [
+    Validators.required
+  ]);
+  age = new FormControl('', [
+    Validators.required,
+    Validators.min(16),
+    Validators.max(100),
+  ]);
   phoneNumber = new FormControl('');
 
   registerForm = new FormGroup({
     name: this.name,
     email: this.email,
     password: this.password,
-    confirlm_password: this.confirlm_password,
+    confirm_password: this.confirm_password,
     age: this.age,
     phoneNumber: this.phoneNumber,
   });
