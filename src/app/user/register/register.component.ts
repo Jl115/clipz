@@ -20,10 +20,7 @@ export class RegisterComponent {
   ]);
   password = new FormControl('', [
     Validators.required,
-    Validators.minLength(8),
-    Validators.maxLength(30),
-    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-])[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]{8,}$'
-    ),
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
   ]);
   confirm_password = new FormControl('', [
     Validators.required
